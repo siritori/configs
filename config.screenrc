@@ -1,5 +1,9 @@
 defencoding utf8
-escape ^z^z
+encoding utf8 utf8
+escape ^@@
+
+bind "^@" next
+bind "^P" screen
 
 # status line
 hardstatus alwayslastline "[%02c:%s] %`%-w%{=b bw}%n %t%{-}%+w"
