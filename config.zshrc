@@ -8,11 +8,12 @@ export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
 
 # Environment
-export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/.gem/ruby/1.8/bin
+export PATH=$PATH:/opt/local/bin:/opt/local/sbin:~/bin:~/.gem/ruby/1.8/bin:~/utils
 export PAGER=less
 export EDITOR=vim
 export LIBRARY_PATH=$LIBRARY_PATH:~/lib
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:~/include
+export LSCOLORS=ExFxCxDxBxegedaxagacad
 
 # Prompt
 setopt prompt_subst
@@ -34,8 +35,9 @@ source ~/utils/comp.zsh
 bindkey -v
 
 # Auto load
+fpath=(~/utils/completion ${fpath})
 autoload -U compinit
-compinit
+compinit -u
 setopt correct
 
 # Change directory
@@ -44,6 +46,18 @@ setopt auto_pushd
 setopt list_packed
 
 # Function
+_task() {
+   local cmddesc
+   cmddesc=(
+      "   list   shows current tasks you have"
+      "   add    add task to list"
+      "   rm     delete tasks which are matched regexp"
+      "   edit   edit task list"
+      "   log    task list edit log"
+   )
+   compadd -X 'Task managemant command:' -ld cmddesc list add rm edit log
+}
+compdef _task task
 function on_shellinfo() {
    shellinfo="on"
    echo 'on' > ~/.shellinfo/status
@@ -57,7 +71,7 @@ function mcdir() {
    mkdir $@ && builtin cd $@
 }
 function cd() {
-  builtin cd $@ && ls
+  builtin cd $@ && ls -G
 }
 function cdup() {
    echo
@@ -82,7 +96,7 @@ function precmd() {
 function preexec() {
    shellinfo=`cat ~/.shellinfo/status`
    if [ $shellinfo = "on" ]; then
-      echo $1 | perl ~/.shellinfo/preexec.pl
+      echo $1 | ~/.shellinfo/preexec.pl
    fi
    if [ $1 = "fg" ]; then
       old=`expr $cur - 1`
@@ -95,15 +109,14 @@ function zshexit() {
    fi
 }
 function command_not_found_handler() {
-   echo "command not found (´；ω；｀)ﾌﾞﾜｯ"
-   echo $* >> ~/.shellinfo/typo/cmd.log
+   echo "えっ$1とかそんなコマンドしらないんだけど(´；ω；｀)ﾌﾞﾜｯ"
+   echo $* >> ~/.shellinfo/analysis/typos/cmd.log
    count=`~/.shellinfo/typo.pl`
    today_count=${count%,*}
    total_count=${count#*,}
    if [ $shellinfo = "on" ]; then
-      afplay ~/bin/mdai.mp3&
-      stweet "えりっくさんが本日${today_count}回目のtypoをしました。ぷぎゃー。\
-      (トータル${total_count}回目)"
+      afplay ~/.shellinfo/bin/mdie.wav&
+      stweet `~/.shellinfo/typomsg.pl ${today_count} ${total_count}`
    fi
    sleep 1
    return
@@ -146,6 +159,7 @@ shellinfo=`cat ~/.shellinfo/status`
 if [ -z $STY ]; then
    if [ $shellinfo = "on" ]; then
       afplay ~/.shellinfo/bin/grow.wav&
+      cat -n ~/schedule/tasks.txt | sort -rn
+      cat ~/schedule/everyday.txt
    fi
-#   screen
 fi
