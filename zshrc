@@ -1,11 +1,11 @@
-zstyle :compinstall filename '~/.zshrc'
 
 # Auto load
 autoload -U compinit; compinit
 autoload -U colors; colors
-
-# Auto correct
-setopt correct
+autoload -Uz add-zsh-hook
+autoload -Uz vcs_info
+autoload -Uz is-at-least
+autoload -Uz zargs
 
 # Enable to print filename in Japanese
 setopt print_eight_bit
@@ -16,11 +16,17 @@ bindkey -e # emacs like
 # Environment
 export LANG=ja_JP.UTF-8
 export LC_ALL=ja_JP.UTF-8
-export EDITOR=vim
-export PAGER=less
-export LESSCHARSET=utf-8
 export LSCOLORS=ExFxCxDxBxegedaxagacad
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+
+# vim
+export EDITOR=vim
+
+# less
+if which less > /dev/null ; then
+  export PAGER=less
+  export LESSCHARSET=utf-8
+fi
 
 # Prompt
 setopt prompt_subst
@@ -33,6 +39,14 @@ if type "git" > /dev/null && [ -f ~/.zsh/git.zsh ]; then
 else
   RPROMPT='%F{white}[%~]%f'
 fi
+
+# Auto correct
+setopt correct
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*:sudo:*' command-path \
+  /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+zstyle ':completion:*:cd:*' tag-order local-directories path-directories
+
 
 # History
 setopt share_history
@@ -49,6 +63,9 @@ function cd() {
 setopt auto_cd
 setopt auto_pushd
 setopt list_packed
+setopt pushd_ignore_dups
+setopt pushd_silent
+setopt extended_glob
 
 # Original command_not_found_handler (records typo)
 function command_not_found_handler() {
