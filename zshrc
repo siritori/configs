@@ -28,11 +28,6 @@ if which less > /dev/null ; then
   export LESSCHARSET=utf-8
 fi
 
-# golang
-export GOROOT=$HOME/local/go
-export GOPATH=$HOME/_go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
-
 # Prompt
 setopt prompt_subst
 SPROMPT="%R -> %r? [n,y,a,e]:"
