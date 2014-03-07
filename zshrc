@@ -92,5 +92,9 @@ if [ -f ~/.zsh/incr.zsh ]; then
 fi
 
 # rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 
