@@ -102,6 +102,9 @@ augroup SkeletonAu
     autocmd BufNewFile *.tex  0r $HOME/.vim/templates/skel.tex
 augroup END
 
+autocmd FileType ruby setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
+autocmd FileType make setlocal noexpandtab
+
 """ NEOBUNDLE
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
