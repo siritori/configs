@@ -6,6 +6,7 @@ gitconfig           .gitconfig
 tmux.conf           .tmux.conf
 vim                 .vim
 vimrc               .vimrc
+go_packages         .go_packages
 zshrc               .zshrc
 zsh                 .zsh
 EOT
