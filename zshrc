@@ -91,6 +91,11 @@ if [ -f ~/.zsh/incr.zsh ]; then
   source ~/.zsh/incr.zsh
 fi
 
+# Local settings
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
 # rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 if which rbenv > /dev/null; then
