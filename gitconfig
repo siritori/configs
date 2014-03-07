@@ -1,0 +1,10 @@
+[user]
+	name = Eric Sartre
+	email = s1111355@coins.tsukuba.ac.jp
+[core]
+	excludesfile = /Users/eric/utils/.gitignore
+[alias]
+  s = status
+  co = checkout
+  cm = commit
+

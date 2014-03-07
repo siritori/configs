@@ -1,0 +1,16 @@
+#!/bin/sh
+set -x
+{
+cat <<EOT
+gitconfig           .gitconfig
+tmux.conf           .tmux.conf
+vim                 .vim
+vimrc               .vimrc
+zshrc               .zshrc
+zsh                 .zsh
+EOT
+} | while read origin symlink ; do
+    rm -f ~/$symlink
+    ln -f -s $PWD/$origin ~/$symlink
+done
+
