@@ -28,10 +28,11 @@ if which less > /dev/null ; then
   export LESSCHARSET=utf-8
 fi
 
-# golang
-export GOROOT=$HOME/local/go
-export GOPATH=$HOME/_go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# go
+if which go > /dev/null ; then
+  export GOPATH=$HOME/.go_packages
+  export PATH=$GOPATH/bin:$PATH
+fi
 
 # Prompt
 setopt prompt_subst
