@@ -108,4 +108,10 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
+# ndenv
+export PATH="$HOME/.ndenv/bin:$PATH"
+if which ndenv > /dev/null; then
+  eval "$(ndenv init -)"
+fi
+
 
