@@ -124,6 +124,8 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'wting/rust.vim'
 NeoBundle 'derekwyatt/vim-scala.git'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'kchmck/vim-coffee-script'
 NeoBundleLazy 'Blackrush/vim-gocode', {"autoload": {"filetypes": ['go']}}
 NeoBundleCheck
 filetype plugin indent on
