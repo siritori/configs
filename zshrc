@@ -30,8 +30,7 @@ fi
 
 # go
 if which go > /dev/null ; then
-  export GOPATH=$HOME/.go_packages
-  export PATH=$GOPATH/bin:$PATH
+  export GOPATH=$HOME/go_packages
 fi
 
 # Prompt
@@ -41,9 +40,9 @@ PROMPT="%F{white}%T[${USER}@${HOST%-*}]%%%f "
 if type "git" > /dev/null && [ -f ~/.zsh/git.zsh ]; then
   # show git branch at rprompt if ~/.zsh/git.zsh exists
   source ~/.zsh/git.zsh
-  RPROMPT='%F{white}[`rprompt-git-current-branch`%~]%f'
+  RPROMPT='%F{white}[`rprompt-git-current-branch`%~][`osx-cpu-temp`]%f'
 else
-  RPROMPT='%F{white}[%~]%f'
+  RPROMPT='%F{white}[%~][`osx-cpu-temp`]%f'
 fi
 
 # Auto correct
@@ -97,6 +96,7 @@ if [ -f ~/.zsh/incr.zsh ]; then
   source ~/.zsh/incr.zsh
 fi
 
+
 # Local settings
 if [ -f ~/.zshrc.local ]; then
   source ~/.zshrc.local
@@ -114,4 +114,8 @@ if which ndenv > /dev/null; then
   eval "$(ndenv init -)"
 fi
 
+# node.js
+if which npm > /dev/null; then
+  eval "$(npm completion)"
+fi
 

@@ -1,15 +1,31 @@
-\documentclass{jarticle}
+\documentclass{jsarticle}
+
+% Encoding
+\usepackage[T1]{fontenc}    % Font : T1
+\usepackage{textcomp}       % Font : TS1
+\usepackage[utf8]{inputenc} % File : UTF-8
+
+% Fonts
+\usepackage[sc]{mathpazo}       % Body, Equation font : Palatino
+\usepackage[scaled]{helvet}     % Sunserif : Helvetica
+\usepackage{otf}                % OpenType Font
+\renewcommand{\ttdefault}{lmtt} % Monospaced as lmtt
+
+% Graphic, Tables
+\usepackage{float}
+\usepackage[dvipdfmx,hiresbb]{graphicx,xcolor}
+
 \begin{document}
 \title{}
-\date{}
 \author{}
+\date{}
 \maketitle
 \section{}
 \section{}
 \section{}
-\begin{thebibliography}{99}
-  \item
-  \item
-\end{thebibliography}
+
+\bibliographystyle{jplain}
+\bibliography{***}
+
 \end{document}
 

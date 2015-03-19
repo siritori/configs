@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Users/eric/Dropbox/simplejp2/htdocs2/assets/css'
+let g:netrw_dirhist_2='/Users/eric/Downloads/coins-thesis'
+let g:netrw_dirhist_3='/Users/eric/Dropbox/research/paper/figures'
+let g:netrw_dirhist_4='/Users/eric/Dropbox/research/paper'
+let g:netrw_dirhist_5='/Users/eric/Dropbox/research'
+let g:netrw_dirhist_6='/Users/eric/Documents/product/mutual-firefox/browser'
+let g:netrw_dirhist_7='/Users/eric/Documents/product/mutual-firefox/browser/locales/en-US/chrome/browser'
+let g:netrw_dirhist_8='/Users/eric/Documents/product/mutual-firefox/browser/base/content/abouthome'
