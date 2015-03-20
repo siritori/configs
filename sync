@@ -16,4 +16,5 @@ EOT
     rm -rf ~/$symlink
     ln -f -s $PWD/$origin ~/$symlink
 done
+chsh -s /bin/zsh
 
