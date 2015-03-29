@@ -40,9 +40,9 @@ PROMPT="%F{white}%T[${USER}@${HOST%-*}]%%%f "
 if type "git" > /dev/null && [ -f ~/.zsh/git.zsh ]; then
   # show git branch at rprompt if ~/.zsh/git.zsh exists
   source ~/.zsh/git.zsh
-  RPROMPT='%F{white}[`rprompt-git-current-branch`%~][`osx-cpu-temp`]%f'
+  RPROMPT='%F{white}[`rprompt-git-current-branch`%~]%f'
 else
-  RPROMPT='%F{white}[%~][`osx-cpu-temp`]%f'
+  RPROMPT='%F{white}[%~]%f'
 fi
 
 # Auto correct

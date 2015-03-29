@@ -1,5 +1,7 @@
 #!/bin/sh
 set -x
+git submodule init
+git submodule update
 {
 cat <<EOT
 gitconfig           .gitconfig
@@ -14,4 +16,5 @@ EOT
     rm -rf ~/$symlink
     ln -f -s $PWD/$origin ~/$symlink
 done
+chsh -s /bin/zsh
 
